@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using crossblog.Domain;
+﻿using crossblog.Domain;
 using crossblog.Model;
 using crossblog.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace crossblog.Controllers
 {
@@ -34,7 +33,7 @@ namespace crossblog.Controllers
                 return NotFound();
             }
 
-            var comments = await _commentRepository.Query().ToListAsync();
+            var comments = await _commentRepository.Query().Where(c=>c.ArticleId == articleId).ToListAsync();
 
             var result = new CommentListModel
             {
@@ -105,7 +104,7 @@ namespace crossblog.Controllers
                 Email = model.Email,
                 Title = model.Title,
                 Content = model.Content,
-                Date = DateTime.UtcNow,
+                Date = DateTime.UtcNow.ToLocalTime(),
                 Published = model.Published
             };
 

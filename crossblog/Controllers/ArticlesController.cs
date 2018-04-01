@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading.Tasks;
-using crossblog.Domain;
+﻿using crossblog.Domain;
 using crossblog.Model;
 using crossblog.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace crossblog.Controllers
 {
@@ -79,13 +76,22 @@ namespace crossblog.Controllers
             {
                 Title = model.Title,
                 Content = model.Content,
-                Date = model.Date,
+                Date = DateTime.UtcNow.ToLocalTime(),
                 Published = model.Published
             };
 
             await _articleRepository.InsertAsync(article);
 
-            return Created($"articles/{article.Id}", article);
+            var articleModel = new ArticleModel
+            {
+                Id = article.Id,
+                Title = article.Title,
+                Content = article.Content,
+                Date = article.Date,
+                Published = article.Published
+            };
+
+            return Created($"articles/{article.Id}", articleModel);
         }
 
         // PUT articles/5
@@ -106,12 +112,21 @@ namespace crossblog.Controllers
 
             article.Title = model.Title;
             article.Content = model.Content;
-            article.Date = DateTime.UtcNow;
+            article.Date = DateTime.UtcNow.ToLocalTime();
             article.Published = model.Published;
 
             await _articleRepository.UpdateAsync(article);
 
-            return Ok(article);
+            var articleModel = new ArticleModel
+            {
+                Id = article.Id,
+                Title = article.Title,
+                Content = article.Content,
+                Date = article.Date,
+                Published = article.Published
+            };
+
+            return Ok(articleModel);
         }
 
         // DELETE articles/5
@@ -125,7 +140,7 @@ namespace crossblog.Controllers
                 return NotFound();
             }
 
-            await _articleRepository.DeleteAsync(id);
+            await _articleRepository.DeleteAsync(article);
 
             return Ok();
         }

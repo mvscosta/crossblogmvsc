@@ -23,8 +23,8 @@ namespace crossblog.Repositories
 
         public async Task InsertAsync(T entity)
         {
-            entity.Created_At = DateTime.UtcNow;
-            entity.Updated_At = DateTime.UtcNow;
+            entity.Created_At = DateTime.UtcNow.ToLocalTime();
+            entity.Updated_At = DateTime.UtcNow.ToLocalTime();
 
             _dbContext.Set<T>().Add(entity);
             await _dbContext.SaveChangesAsync();
@@ -32,17 +32,16 @@ namespace crossblog.Repositories
 
         public async Task UpdateAsync(T entity)
         {
-            entity.Updated_At = DateTime.UtcNow;
+            entity.Updated_At = DateTime.UtcNow.ToLocalTime();
 
             _dbContext.Entry(entity).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(T entity)
         {
-            T entity = new T() { Id = id };
-
             _dbContext.Entry(entity).State = EntityState.Deleted;
+
             await _dbContext.SaveChangesAsync();
         }
     }
