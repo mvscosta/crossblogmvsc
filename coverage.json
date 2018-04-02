@@ -1,8 +1,8 @@
 {
-  "SourcePath": "C:\\GitHub\\crossblogmvsc\\",
-  "HitsFile": "C:\\GitHub\\crossblogmvsc\\coverage-hits.txt",
+  "SourcePath": "C:\\github\\crossblogmvsc\\",
+  "HitsFile": "C:\\github\\crossblogmvsc\\coverage-hits.txt",
   "ExtraAssemblies": [
-    "C:\\GitHub\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\dotnet-minicover.dll"
+    "C:\\github\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\dotnet-minicover.dll"
   ],
   "Assemblies": [
     {
@@ -2656,10 +2656,10 @@
       },
       "Locations": [
         {
-          "File": "C:\\GitHub\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\crossblog.dll",
-          "BackupFile": "C:\\GitHub\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\crossblog.uninstrumented.dll",
-          "PdbFile": "C:\\GitHub\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\crossblog.pdb",
-          "BackupPdbFile": "C:\\GitHub\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\crossblog.uninstrumented.pdb"
+          "File": "C:\\github\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\crossblog.dll",
+          "BackupFile": "C:\\github\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\crossblog.uninstrumented.dll",
+          "PdbFile": "C:\\github\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\crossblog.pdb",
+          "BackupPdbFile": "C:\\github\\crossblogmvsc\\crossblog.tests\\bin\\Debug\\netcoreapp2.0\\crossblog.uninstrumented.pdb"
         }
       ]
     }
